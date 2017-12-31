@@ -6,7 +6,7 @@ import { InicioPage } from '../pages/inicio/inicio';
 import { TusVehiculosPage } from '../pages/tus-vehiculos/tus-vehiculos';
 import { MapaPage } from '../pages/mapa/mapa';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
+import { RegisterPage } from '../pages/register/register';
 import { ContactoPage } from '../pages/contacto/contacto';
 
 
@@ -32,7 +32,7 @@ export const firebaseConfig = {
     TusVehiculosPage,
     MapaPage,
     LoginPage,
-    SignupPage,
+    RegisterPage,
     ContactoPage
   ],
   imports: [
@@ -49,7 +49,7 @@ export const firebaseConfig = {
     TusVehiculosPage,
     MapaPage,
     LoginPage,
-    SignupPage,
+    RegisterPage,
     ContactoPage
   ],
   providers: [

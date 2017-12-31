@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
+import { RegisterPage } from '../pages/register/register';
 import { TusVehiculosPage } from '../pages/tus-vehiculos/tus-vehiculos';
 import { MapaPage } from '../pages/mapa/mapa';
 import { ContactoPage } from '../pages/contacto/contacto';
@@ -37,7 +37,7 @@ export class MyApp {
     this.navCtrl.setRoot(LoginPage);
   }goToSignup(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(SignupPage);
+    this.navCtrl.setRoot(RegisterPage);
   }goToTusVehiculos(params){
     if (!params) params = {};
     this.navCtrl.setRoot(TusVehiculosPage);

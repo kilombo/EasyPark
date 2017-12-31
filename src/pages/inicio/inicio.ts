@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { SignupPage } from '../signup/signup';
+import { RegisterPage } from '../register/register';
+import { User } from "../../models/user";
 
 @Component({
   selector: 'page-inicio',
@@ -16,6 +17,6 @@ export class InicioPage {
     this.navCtrl.push(LoginPage);
   }goToSignup(params){
     if (!params) params = {};
-    this.navCtrl.push(SignupPage);
+    this.navCtrl.push(RegisterPage);
   }
 }

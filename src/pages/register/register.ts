@@ -1,35 +1,28 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from "../../models/user";
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from "angularfire2/auth";
+
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-register',
+  templateUrl: 'register.html',
 })
-export class LoginPage {
+export class RegisterPage {
 
   user = {} as User;
 
   constructor(private afAuth: AngularFireAuth,
     public navCtrl: NavController, public navParams: NavParams) {
   }
- 
-  async login(user: User) {
+
+  async register(user: User) {
     try {
-      const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-      if (result) {
-        this.navCtrl.setRoot('HomePage');
-      }  
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+      console.log(result);
     }
     catch (e) {
       console.error(e);
     }
   }
- 
-  register() {
-    this.navCtrl.push('RegisterPage');
-  }
-
-
 }
