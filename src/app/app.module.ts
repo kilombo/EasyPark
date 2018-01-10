@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { InicioPage } from '../pages/inicio/inicio';
 import { TusVehiculosPage } from '../pages/tus-vehiculos/tus-vehiculos';
+import { TusVehiculosFormPage } from '../pages/tus-vehiculos-form/tus-vehiculos-form';
 import { MapaPage } from '../pages/mapa/mapa';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -30,6 +31,7 @@ export const firebaseConfig = {
     MyApp,
     InicioPage,
     TusVehiculosPage,
+    TusVehiculosFormPage,
     MapaPage,
     LoginPage,
     RegisterPage,
@@ -47,6 +49,7 @@ export const firebaseConfig = {
     MyApp,
     InicioPage,
     TusVehiculosPage,
+    TusVehiculosFormPage,
     MapaPage,
     LoginPage,
     RegisterPage,
