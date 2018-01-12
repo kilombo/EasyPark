@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Car } from "../../models/car";
+import { InicioPage } from '../inicio/inicio';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+  AngularFirestoreCollection
+} from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the TusVehiculosFormPage page.
@@ -18,15 +26,21 @@ export class TusVehiculosFormPage {
 
   car = {} as Car;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+
+  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private db: AngularFirestore) {
+    if (!this.afAuth.auth.currentUser) this.navCtrl.setRoot(InicioPage);
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TusVehiculosFormPage');
   }
 
-  save(car){
+  save(car) {
     console.log(car);
+    const collection: AngularFirestoreCollection<Car> = this.db.collection(this.afAuth.auth.currentUser.uid);
+
   }
 
 }
