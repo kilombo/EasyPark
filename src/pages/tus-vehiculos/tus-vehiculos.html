@@ -12,8 +12,9 @@
   <ion-list id="tusVehiculos-list4">
     <ion-list id="tusVehiculos-list5">
       <ion-item-sliding>
-        <ion-item color="none" id="tusVehiculos-list-item7">
-          Car 1
+
+        <ion-item color="none" *ngFor="let userCar of userCars | async">
+            {{ userCar.brand }} {{ userCar.model }}
         </ion-item>
         <ion-item-options side="left">
           <button ion-button color="energized">
@@ -25,12 +26,6 @@
           <button ion-button color="positive"></button>
         </ion-item-options>
       </ion-item-sliding>
-      <ion-item color="none" id="tusVehiculos-list-item8">
-        Car 2
-      </ion-item>
-      <ion-item color="none" id="tusVehiculos-list-item9">
-        Car 3
-      </ion-item>
     </ion-list>
   </ion-list>
   <ion-fab right bottom>

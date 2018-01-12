@@ -62,6 +62,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
+    AngularFirestoreModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
