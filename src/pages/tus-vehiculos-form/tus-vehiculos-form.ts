@@ -39,7 +39,13 @@ export class TusVehiculosFormPage {
 
   save(car) {
     console.log(car);
-    const collection: AngularFirestoreCollection<Car> = this.db.collection(this.afAuth.auth.currentUser.uid);
+// Check:https://angularfirebase.com/lessons/firestore-advanced-usage-angularfire/
+    // const collection: AngularFirestoreCollection<Car> = this.db.collection(this.afAuth.auth.currentUser.uid);
+    let userCar = {
+      brand: car.brand,
+      model: car.model
+    };
+    this.db.set(this.afAuth.auth.currentUser.uid, userCar);
 
   }
 
