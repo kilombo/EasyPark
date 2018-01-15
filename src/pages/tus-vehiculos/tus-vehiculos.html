@@ -11,9 +11,8 @@
 <ion-content padding id="page2">
   <ion-list id="tusVehiculos-list4">
     <ion-list id="tusVehiculos-list5">
-      <ion-item-sliding>
-
-        <ion-item color="none" *ngFor="let userCar of userCars | async">
+      <ion-item-sliding  *ngFor="let userCar of userCars | async">
+        <ion-item color="none">
             {{ userCar.brand }} {{ userCar.model }}
         </ion-item>
         <ion-item-options side="left">
