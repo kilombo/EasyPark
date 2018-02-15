@@ -1,6 +1,6 @@
 {
-  "name": "Ionic PWA Toolkit",
-  "short_name": "Ionic PWA",
+  "name": "EasyPark",
+  "short_name": "EasyPark",
   "start_url": "/",
   "display": "standalone",
   "icons": [{
