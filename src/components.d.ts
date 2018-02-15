@@ -82,6 +82,66 @@ declare global {
 
 
 import {
+  FooterComponent as FooterComponent
+} from './components/footer-component/footer-component';
+
+declare global {
+  interface HTMLFooterComponentElement extends FooterComponent, HTMLStencilElement {
+  }
+  var HTMLFooterComponentElement: {
+    prototype: HTMLFooterComponentElement;
+    new (): HTMLFooterComponentElement;
+  };
+  interface HTMLElementTagNameMap {
+    "footer-component": HTMLFooterComponentElement;
+  }
+  interface ElementTagNameMap {
+    "footer-component": HTMLFooterComponentElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "footer-component": JSXElements.FooterComponentAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface FooterComponentAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
+  HeaderComponent as HeaderComponent
+} from './components/header-component/header-component';
+
+declare global {
+  interface HTMLHeaderComponentElement extends HeaderComponent, HTMLStencilElement {
+  }
+  var HTMLHeaderComponentElement: {
+    prototype: HTMLHeaderComponentElement;
+    new (): HTMLHeaderComponentElement;
+  };
+  interface HTMLElementTagNameMap {
+    "header-component": HTMLHeaderComponentElement;
+  }
+  interface ElementTagNameMap {
+    "header-component": HTMLHeaderComponentElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "header-component": JSXElements.HeaderComponentAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface HeaderComponentAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
   LazyImg as LazyImg
 } from './components/lazy-img/lazy-img';
 
@@ -107,6 +167,36 @@ declare global {
     export interface LazyImgAttributes extends HTMLAttributes {
       alt?: string;
       src?: string;
+    }
+  }
+}
+
+
+import {
+  LoginFirebase as LoginFirebase
+} from './components/login-firebase/login-firebase';
+
+declare global {
+  interface HTMLLoginFirebaseElement extends LoginFirebase, HTMLStencilElement {
+  }
+  var HTMLLoginFirebaseElement: {
+    prototype: HTMLLoginFirebaseElement;
+    new (): HTMLLoginFirebaseElement;
+  };
+  interface HTMLElementTagNameMap {
+    "login-firebase": HTMLLoginFirebaseElement;
+  }
+  interface ElementTagNameMap {
+    "login-firebase": HTMLLoginFirebaseElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "login-firebase": JSXElements.LoginFirebaseAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface LoginFirebaseAttributes extends HTMLAttributes {
+      
     }
   }
 }
