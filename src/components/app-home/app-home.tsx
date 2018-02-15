@@ -1,4 +1,4 @@
-import { Component, Listen, State } from '@stencil/core';
+import { Component } from '@stencil/core';
 
 
 @Component({
@@ -6,13 +6,6 @@ import { Component, Listen, State } from '@stencil/core';
   styleUrl: 'app-home.scss'
 })
 export class AppHome {
-
-  @State() uid:string = null;
-
-  @Listen('uidObtained')
-  uidObtainedHandler(event: CustomEvent) {
-    this.uid = event.detail;
-  }
 
   render() {
     return (

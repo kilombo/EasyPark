@@ -20,7 +20,7 @@
     "@stencil/core": "latest",
     "@stencil/router": "latest",
     "@types/googlemaps": "^3.30.7",
-    "firebase": "^4.6.0",
+    "firebase": "^4.8.2",
     "localforage": "^1.5.6",
     "localforage-cordovasqlitedriver": "^1.7.0"
   },

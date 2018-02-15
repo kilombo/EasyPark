@@ -12,21 +12,12 @@ import {
   MatchResults,
 } from '@stencil/router';
 
-declare global {
-  interface HTMLStencilElement extends HTMLElement {
-    componentOnReady(): Promise<this>;
-    componentOnReady(done: (ele?: this) => void): void;
-  }
-}
-
-
-
 import {
   AppContact as AppContact
 } from './components/app-contact/app-contact';
 
 declare global {
-  interface HTMLAppContactElement extends AppContact, HTMLStencilElement {
+  interface HTMLAppContactElement extends AppContact, HTMLElement {
   }
   var HTMLAppContactElement: {
     prototype: HTMLAppContactElement;
@@ -56,7 +47,7 @@ import {
 } from './components/app-home/app-home';
 
 declare global {
-  interface HTMLAppHomeElement extends AppHome, HTMLStencilElement {
+  interface HTMLAppHomeElement extends AppHome, HTMLElement {
   }
   var HTMLAppHomeElement: {
     prototype: HTMLAppHomeElement;
@@ -86,7 +77,7 @@ import {
 } from './components/app-map/app-map';
 
 declare global {
-  interface HTMLAppMapElement extends AppMap, HTMLStencilElement {
+  interface HTMLAppMapElement extends AppMap, HTMLElement {
   }
   var HTMLAppMapElement: {
     prototype: HTMLAppMapElement;
@@ -116,7 +107,7 @@ import {
 } from './components/app-profile/app-profile';
 
 declare global {
-  interface HTMLAppProfileElement extends AppProfile, HTMLStencilElement {
+  interface HTMLAppProfileElement extends AppProfile, HTMLElement {
   }
   var HTMLAppProfileElement: {
     prototype: HTMLAppProfileElement;
@@ -146,7 +137,7 @@ import {
 } from './components/app-user-cars/app-user-cars';
 
 declare global {
-  interface HTMLAppUserCarsElement extends AppUserCars, HTMLStencilElement {
+  interface HTMLAppUserCarsElement extends AppUserCars, HTMLElement {
   }
   var HTMLAppUserCarsElement: {
     prototype: HTMLAppUserCarsElement;
@@ -176,7 +167,7 @@ import {
 } from './components/contact-form/contact-form';
 
 declare global {
-  interface HTMLContactFormElement extends ContactForm, HTMLStencilElement {
+  interface HTMLContactFormElement extends ContactForm, HTMLElement {
   }
   var HTMLContactFormElement: {
     prototype: HTMLContactFormElement;
@@ -206,7 +197,7 @@ import {
 } from './components/footer-component/footer-component';
 
 declare global {
-  interface HTMLFooterComponentElement extends FooterComponent, HTMLStencilElement {
+  interface HTMLFooterComponentElement extends FooterComponent, HTMLElement {
   }
   var HTMLFooterComponentElement: {
     prototype: HTMLFooterComponentElement;
@@ -236,7 +227,7 @@ import {
 } from './components/header-component/header-component';
 
 declare global {
-  interface HTMLHeaderComponentElement extends HeaderComponent, HTMLStencilElement {
+  interface HTMLHeaderComponentElement extends HeaderComponent, HTMLElement {
   }
   var HTMLHeaderComponentElement: {
     prototype: HTMLHeaderComponentElement;
@@ -266,7 +257,7 @@ import {
 } from './components/lazy-img/lazy-img';
 
 declare global {
-  interface HTMLLazyImgElement extends LazyImg, HTMLStencilElement {
+  interface HTMLLazyImgElement extends LazyImg, HTMLElement {
   }
   var HTMLLazyImgElement: {
     prototype: HTMLLazyImgElement;
@@ -297,7 +288,7 @@ import {
 } from './components/login-firebase/login-firebase';
 
 declare global {
-  interface HTMLLoginFirebaseElement extends LoginFirebase, HTMLStencilElement {
+  interface HTMLLoginFirebaseElement extends LoginFirebase, HTMLElement {
   }
   var HTMLLoginFirebaseElement: {
     prototype: HTMLLoginFirebaseElement;
@@ -327,7 +318,7 @@ import {
 } from './components/map-component/map-component';
 
 declare global {
-  interface HTMLMapComponentElement extends MapComponent, HTMLStencilElement {
+  interface HTMLMapComponentElement extends MapComponent, HTMLElement {
   }
   var HTMLMapComponentElement: {
     prototype: HTMLMapComponentElement;
@@ -357,7 +348,7 @@ import {
 } from './components/menu-links/menu-links';
 
 declare global {
-  interface HTMLMenuLinksElement extends MenuLinks, HTMLStencilElement {
+  interface HTMLMenuLinksElement extends MenuLinks, HTMLElement {
   }
   var HTMLMenuLinksElement: {
     prototype: HTMLMenuLinksElement;
@@ -387,7 +378,7 @@ import {
 } from './components/my-app/my-app';
 
 declare global {
-  interface HTMLMyAppElement extends MyApp, HTMLStencilElement {
+  interface HTMLMyAppElement extends MyApp, HTMLElement {
   }
   var HTMLMyAppElement: {
     prototype: HTMLMyAppElement;
@@ -417,7 +408,7 @@ import {
 } from './components/save-location-firestore/save-location-firestore';
 
 declare global {
-  interface HTMLSaveLocationFirestoreElement extends SaveLocationFirestore, HTMLStencilElement {
+  interface HTMLSaveLocationFirestoreElement extends SaveLocationFirestore, HTMLElement {
   }
   var HTMLSaveLocationFirestoreElement: {
     prototype: HTMLSaveLocationFirestoreElement;
@@ -447,7 +438,7 @@ import {
 } from './components/user-cars/user-cars';
 
 declare global {
-  interface HTMLUserCarsElement extends UserCars, HTMLStencilElement {
+  interface HTMLUserCarsElement extends UserCars, HTMLElement {
   }
   var HTMLUserCarsElement: {
     prototype: HTMLUserCarsElement;
