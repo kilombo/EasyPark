@@ -231,4 +231,35 @@ declare global {
   }
 }
 
+
+import {
+  SaveLocationFirestore as SaveLocationFirestore
+} from './components/save-location-firestore/save-location-firestore';
+
+declare global {
+  interface HTMLSaveLocationFirestoreElement extends SaveLocationFirestore, HTMLStencilElement {
+  }
+  var HTMLSaveLocationFirestoreElement: {
+    prototype: HTMLSaveLocationFirestoreElement;
+    new (): HTMLSaveLocationFirestoreElement;
+  };
+  interface HTMLElementTagNameMap {
+    "save-location-firestore": HTMLSaveLocationFirestoreElement;
+  }
+  interface ElementTagNameMap {
+    "save-location-firestore": HTMLSaveLocationFirestoreElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "save-location-firestore": JSXElements.SaveLocationFirestoreAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface SaveLocationFirestoreAttributes extends HTMLAttributes {
+      saveText?: string;
+      uid?: any;
+    }
+  }
+}
+
 declare global { namespace JSX { interface StencilJSX {} } }
