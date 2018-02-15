@@ -22,6 +22,36 @@ declare global {
 
 
 import {
+  AppContact as AppContact
+} from './components/app-contact/app-contact';
+
+declare global {
+  interface HTMLAppContactElement extends AppContact, HTMLStencilElement {
+  }
+  var HTMLAppContactElement: {
+    prototype: HTMLAppContactElement;
+    new (): HTMLAppContactElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-contact": HTMLAppContactElement;
+  }
+  interface ElementTagNameMap {
+    "app-contact": HTMLAppContactElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-contact": JSXElements.AppContactAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppContactAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
   AppHome as AppHome
 } from './components/app-home/app-home';
 
@@ -76,6 +106,66 @@ declare global {
   namespace JSXElements {
     export interface AppProfileAttributes extends HTMLAttributes {
       match?: MatchResults;
+    }
+  }
+}
+
+
+import {
+  AppUserCars as AppUserCars
+} from './components/app-user-cars/app-user-cars';
+
+declare global {
+  interface HTMLAppUserCarsElement extends AppUserCars, HTMLStencilElement {
+  }
+  var HTMLAppUserCarsElement: {
+    prototype: HTMLAppUserCarsElement;
+    new (): HTMLAppUserCarsElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-user-cars": HTMLAppUserCarsElement;
+  }
+  interface ElementTagNameMap {
+    "app-user-cars": HTMLAppUserCarsElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-user-cars": JSXElements.AppUserCarsAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppUserCarsAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
+  ContactForm as ContactForm
+} from './components/contact-form/contact-form';
+
+declare global {
+  interface HTMLContactFormElement extends ContactForm, HTMLStencilElement {
+  }
+  var HTMLContactFormElement: {
+    prototype: HTMLContactFormElement;
+    new (): HTMLContactFormElement;
+  };
+  interface HTMLElementTagNameMap {
+    "contact-form": HTMLContactFormElement;
+  }
+  interface ElementTagNameMap {
+    "contact-form": HTMLContactFormElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "contact-form": JSXElements.ContactFormAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ContactFormAttributes extends HTMLAttributes {
+      
     }
   }
 }
@@ -203,6 +293,36 @@ declare global {
 
 
 import {
+  MenuLinks as MenuLinks
+} from './components/menu-links/menu-links';
+
+declare global {
+  interface HTMLMenuLinksElement extends MenuLinks, HTMLStencilElement {
+  }
+  var HTMLMenuLinksElement: {
+    prototype: HTMLMenuLinksElement;
+    new (): HTMLMenuLinksElement;
+  };
+  interface HTMLElementTagNameMap {
+    "menu-links": HTMLMenuLinksElement;
+  }
+  interface ElementTagNameMap {
+    "menu-links": HTMLMenuLinksElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "menu-links": JSXElements.MenuLinksAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface MenuLinksAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
   MyApp as MyApp
 } from './components/my-app/my-app';
 
@@ -258,6 +378,36 @@ declare global {
     export interface SaveLocationFirestoreAttributes extends HTMLAttributes {
       saveText?: string;
       uid?: any;
+    }
+  }
+}
+
+
+import {
+  UserCars as UserCars
+} from './components/user-cars/user-cars';
+
+declare global {
+  interface HTMLUserCarsElement extends UserCars, HTMLStencilElement {
+  }
+  var HTMLUserCarsElement: {
+    prototype: HTMLUserCarsElement;
+    new (): HTMLUserCarsElement;
+  };
+  interface HTMLElementTagNameMap {
+    "user-cars": HTMLUserCarsElement;
+  }
+  interface ElementTagNameMap {
+    "user-cars": HTMLUserCarsElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "user-cars": JSXElements.UserCarsAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface UserCarsAttributes extends HTMLAttributes {
+      uid?: string;
     }
   }
 }
