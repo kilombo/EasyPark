@@ -10,7 +10,6 @@ export class MenuLinks {
   render() {
     return (
       <ul>
-        <li><stencil-route-link url='/'>Home</stencil-route-link></li>
         <li>Login</li>
         <li>Logout</li>
         <li><stencil-route-link url='/map'>Mapa</stencil-route-link></li>

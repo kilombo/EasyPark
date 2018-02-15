@@ -13,9 +13,10 @@ export class FooterComponent {
         <ion-toolbar color="primary">
           <ion-grid>
             <ion-row>
-              <ion-col col-12>
-                <menu-links></menu-links>
+              <ion-col col-6>
+              <save-location-firestore save-text="Aparcar"></save-location-firestore>
               </ion-col>
+              <ion-col col-6></ion-col>
             </ion-row>
           </ion-grid>
         </ion-toolbar>
