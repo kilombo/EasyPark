@@ -82,6 +82,36 @@ declare global {
 
 
 import {
+  AppMap as AppMap
+} from './components/app-map/app-map';
+
+declare global {
+  interface HTMLAppMapElement extends AppMap, HTMLStencilElement {
+  }
+  var HTMLAppMapElement: {
+    prototype: HTMLAppMapElement;
+    new (): HTMLAppMapElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-map": HTMLAppMapElement;
+  }
+  interface ElementTagNameMap {
+    "app-map": HTMLAppMapElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-map": JSXElements.AppMapAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppMapAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
   AppProfile as AppProfile
 } from './components/app-profile/app-profile';
 
@@ -287,6 +317,37 @@ declare global {
   namespace JSXElements {
     export interface LoginFirebaseAttributes extends HTMLAttributes {
       
+    }
+  }
+}
+
+
+import {
+  MapComponent as MapComponent
+} from './components/map-component/map-component';
+
+declare global {
+  interface HTMLMapComponentElement extends MapComponent, HTMLStencilElement {
+  }
+  var HTMLMapComponentElement: {
+    prototype: HTMLMapComponentElement;
+    new (): HTMLMapComponentElement;
+  };
+  interface HTMLElementTagNameMap {
+    "map-component": HTMLMapComponentElement;
+  }
+  interface ElementTagNameMap {
+    "map-component": HTMLMapComponentElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "map-component": JSXElements.MapComponentAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface MapComponentAttributes extends HTMLAttributes {
+      latitude?: number;
+      longitude?: number;
     }
   }
 }

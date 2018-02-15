@@ -19,6 +19,7 @@
     "@ionic/core": "next",
     "@stencil/core": "latest",
     "@stencil/router": "latest",
+    "@types/googlemaps": "^3.30.7",
     "firebase": "^4.6.0"
   },
   "devDependencies": {

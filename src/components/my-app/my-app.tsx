@@ -48,6 +48,7 @@ export class MyApp {
 
             <stencil-route url='/user-cars' component='app-user-cars'></stencil-route>
             <stencil-route url='/contact' component='app-contact'></stencil-route>
+            <stencil-route url='/map' component='app-map'></stencil-route>
 
           </stencil-router>
         </main>
