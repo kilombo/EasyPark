@@ -27,7 +27,15 @@ export class SaveLocationFirestore {
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
           console.log(doc.id, ' => ', doc.data());
-          return doc.id;
+          db.collection('userCars').doc(doc.id).set({
+            'latitude': this.latitude,
+            'longitude': this.longitude
+          }, { merge: true })
+            .then(() => {
+              console.log("Document successfully updated!");
+            }).catch((error) => {
+              console.log("Error updating documents: ", error);
+            });
         });
       })
       .catch((error) => {
@@ -37,35 +45,20 @@ export class SaveLocationFirestore {
 
   async saveCoords() {
     console.log('uid', this.uid);
-
-    this.getUserCar(this.uid).then((carId) => {
-      console.log('getUserCar finished', carId);
-      db.collection('userCars').doc(carId).set({
-        'latitude': this.latitude,
-        'longitude': this.longitude
-      })
-        .then(() => {
-          console.log("Document successfully updated!");
-        }).catch((error) => {
-          console.log("Error updating documents: ", error);
-        });
-    });
+    this.getUserCar(this.uid);
   }
 
   getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPosition);
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        console.log(position);
+        this.saveCoords();
+      });
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  }
-
-  showPosition(position) {
-    console.log("Latitude: " + position.coords.latitude);
-    console.log("Longitude: " + position.coords.longitude);
-    this.latitude = position.coords.latitude;
-    this.longitude = position.coords.longitude;
-    this.saveCoords();
   }
 
   render() {
