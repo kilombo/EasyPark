@@ -18,7 +18,7 @@ export class MapComponent {
 
   initMap() {
     let userCarCoords = { lat: this.latitude, lng: this.longitude };
-    if (document.getElementById('map')) {
+    if (document.getElementById('map') && userCarCoords.lat) {
       let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
         center: userCarCoords
