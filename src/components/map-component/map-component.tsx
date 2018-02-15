@@ -11,25 +11,28 @@ const db = firebase.firestore();
 })
 export class MapComponent {
 
-  @State() latitude:number = null;
-  @State() longitude:number = null;
-  @State() uid:string = null;
-  @State() userCarCoords:object = null;
+  @State() latitude: number = null;
+  @State() longitude: number = null;
+  @State() uid: string = null;
+  @State() userCarCoords: object = null;
 
   initMap() {
-    let userCarCoords = {lat: this.latitude, lng: this.longitude};
-    let map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 16,
-      center: userCarCoords
-    });
-    new google.maps.Marker({
-      position: userCarCoords,
-      map: map
-    });
+    let userCarCoords = { lat: this.latitude, lng: this.longitude };
+    if (document.getElementById('map')) {
+      let map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: userCarCoords
+      });
+      new google.maps.Marker({
+        position: userCarCoords,
+        map: map
+      });
+    }
+
   }
 
   getUserCarCoords() {
-    db.collection('userCars').where('selected', '==', true).where('uid','==',this.uid)
+    db.collection('userCars').where('selected', '==', true).where('uid', '==', this.uid)
       .onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           this.longitude = doc.data().longitude;
@@ -39,7 +42,7 @@ export class MapComponent {
       });
   }
 
-  async componentDidLoad(){
+  async componentDidLoad() {
     this.uid = await firebase.auth().currentUser.uid;
     this.getUserCarCoords();
   }

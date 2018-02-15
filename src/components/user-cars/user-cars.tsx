@@ -17,8 +17,17 @@ export class UserCars {
     db.collection('userCars').where('uid', '==', this.uid)
       .onSnapshot((querySnapshot) => {
         this.items = [];
+        let item = {};
         querySnapshot.forEach((doc) => {
-          this.items = [...this.items, doc.data()];
+          item = {
+            'carId': doc.id,
+            'info': doc.data()
+          };
+          if (this.items) {
+            this.items = [...this.items, item];
+          } else {
+            this.items = [item];
+          }
         });
       });
   }
@@ -26,6 +35,34 @@ export class UserCars {
   componentDidLoad() {
     this.uid = firebase.auth().currentUser.uid;
     this.getItems();
+  }
+
+  selectCar(carId) {
+    console.log('selectCar', carId);
+
+    // Unselect the current Car.
+    db.collection('userCars').where('selected', '==', true).where('uid', '==', this.uid)
+      .get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          db.collection('userCars').doc(doc.id).set({
+            'selected': false
+          }, { merge: true })
+            .then(() => {
+              db.collection('userCars').doc(carId).set({
+                'selected': true
+              }, { merge: true })
+                .then(() => {
+                  console.log("Document successfully updated!");
+                }).catch((error) => {
+                  console.log("Error updating documents: ", error);
+                });
+            }).catch((error) => {
+              console.log("Error updating documents: ", error);
+            });
+        });
+      }).catch((error) => {
+        console.log("Error getting document:", error);
+      });
   }
 
   render() {
@@ -37,18 +74,18 @@ export class UserCars {
               <ion-item>
                 <ion-avatar item-start><img src="assets/icon/icon.png" /></ion-avatar>
                 <div item-content>
-                  <h2>{item.brand}</h2>
-                  <h3>{item.model}</h3>
+                  <h2>{item.info.brand}</h2>
+                  <h3>{item.info.model}</h3>
                 </div>
-                {item.selected
+                {item.info.selected
                   ? <div item-end><ion-icon name="car"></ion-icon> Seleccionado</div>
                   : <div item-end></div>
                 }
               </ion-item>
               <ion-item-options side="right">
-                {item.selected
+                {item.info.selected
                   ? null
-                  : <button ion-button color="primary"><ion-icon name="checkmark"></ion-icon> Seleccionar</button>
+                  : <button ion-button color="primary" onClick={() => this.selectCar(item.carId)}><ion-icon name="checkmark"></ion-icon> Seleccionar</button>
                 }
                 <button ion-button color="primary"><ion-icon name="remove"></ion-icon> Eliminar</button>
               </ion-item-options>
