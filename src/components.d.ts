@@ -346,8 +346,7 @@ declare global {
   }
   namespace JSXElements {
     export interface MapComponentAttributes extends HTMLAttributes {
-      latitude?: number;
-      longitude?: number;
+      
     }
   }
 }
@@ -438,7 +437,6 @@ declare global {
   namespace JSXElements {
     export interface SaveLocationFirestoreAttributes extends HTMLAttributes {
       saveText?: string;
-      uid?: any;
     }
   }
 }
@@ -468,7 +466,7 @@ declare global {
   }
   namespace JSXElements {
     export interface UserCarsAttributes extends HTMLAttributes {
-      uid?: string;
+      
     }
   }
 }

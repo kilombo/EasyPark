@@ -12,8 +12,7 @@ export class AppUserCars {
       <ion-page>
         <header-component></header-component>
         <ion-content>
-
-          <user-cars uid="17Z8fadZiVgj7SAmqLmaN1bSVlO2"></user-cars>
+          <user-cars></user-cars>
         </ion-content>
         <footer-component></footer-component>
       </ion-page>

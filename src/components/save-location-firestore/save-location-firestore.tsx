@@ -11,11 +11,13 @@ const db = firebase.firestore();
 export class SaveLocationFirestore {
 
   @Prop() saveText: string = 'Save location';
-  @Prop() uid: any = null;
+  @State() uid: any = null;
   @State() latitude: any = null;
   @State() longitude: any = null;
 
-
+  componentDidLoad(){
+    this.uid = firebase.auth().currentUser.uid;
+  }
 
   async getUserCar(uid: string) {
     let userCarRef = db.collection('userCars');
@@ -38,7 +40,7 @@ export class SaveLocationFirestore {
 
     this.getUserCar(this.uid).then((carId) => {
       console.log('getUserCar finished', carId);
-      db.collection('userCoordsCars').doc(this.uid).collection('coordsCars').doc('uLiKL3c2sdbqYPWbGMQM').set({
+      db.collection('userCars').doc(carId).set({
         'latitude': this.latitude,
         'longitude': this.longitude
       })

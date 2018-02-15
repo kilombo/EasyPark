@@ -1,6 +1,5 @@
 import { Component } from '@stencil/core';
 
-
 @Component({
   tag: 'app-map',
   styleUrl: 'app-map.scss'

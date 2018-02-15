@@ -25,6 +25,7 @@ export class LoginFirebase {
 
   componentDidLoad() {
     this.showResetPassword = false;
+    console.log(firebase.auth().currentUser);
     if (firebase.auth().currentUser) {
       this.userLogged = true;
     }

@@ -1,4 +1,4 @@
-import { Component, State, Prop } from '@stencil/core';
+import { Component, State } from '@stencil/core';
 declare var firebase: any;
 
 // Initialize Cloud Firestore through Firebase
@@ -11,7 +11,7 @@ const db = firebase.firestore();
 export class UserCars {
 
   @State() items: any = [];
-  @Prop() uid: string = null;
+  @State() uid: string = null;
 
   getItems() {
     db.collection('userCars').where('uid', '==', this.uid)
@@ -24,6 +24,7 @@ export class UserCars {
   }
 
   componentDidLoad() {
+    this.uid = firebase.auth().currentUser.uid;
     this.getItems();
   }
 

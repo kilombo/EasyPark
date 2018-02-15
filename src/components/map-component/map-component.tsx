@@ -1,6 +1,9 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, State } from '@stencil/core';
 import { } from '@types/googlemaps';
+declare var firebase: any;
 
+// Initialize Cloud Firestore through Firebase
+const db = firebase.firestore();
 
 @Component({
   tag: 'map-component',
@@ -8,8 +11,10 @@ import { } from '@types/googlemaps';
 })
 export class MapComponent {
 
-  @Prop() latitude:number = 39.47633030000001;
-  @Prop() longitude:number = -0.34741289999999997;
+  @State() latitude:number = null;
+  @State() longitude:number = null;
+  @State() uid:string = null;
+  @State() userCarCoords:object = null;
 
   initMap() {
     let userCarCoords = {lat: this.latitude, lng: this.longitude};
@@ -22,8 +27,21 @@ export class MapComponent {
       map: map
     });
   }
-  componentDidLoad(){
-    this.initMap();
+
+  getUserCarCoords() {
+    db.collection('userCars').where('selected', '==', true).where('uid','==',this.uid)
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          this.longitude = doc.data().longitude;
+          this.latitude = doc.data().latitude;
+          this.initMap();
+        });
+      });
+  }
+
+  async componentDidLoad(){
+    this.uid = await firebase.auth().currentUser.uid;
+    this.getUserCarCoords();
   }
   render() {
     return (

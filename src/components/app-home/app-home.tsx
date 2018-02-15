@@ -20,7 +20,7 @@ export class AppHome {
         <header-component></header-component>
         <ion-content>
           <login-firebase></login-firebase>
-          <save-location-firestore uid={this.uid}></save-location-firestore>
+          <save-location-firestore></save-location-firestore>
         </ion-content>
         <footer-component></footer-component>
       </ion-page>
