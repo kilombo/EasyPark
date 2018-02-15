@@ -35,7 +35,6 @@ export class LoginFirebase {
       .then((data) => {
         this.userLogged = true;
         this.uid = data.uid;
-        console.log(data.uid);
         this.uidObtained.emit(data.uid);
       })
       .catch((error) => {

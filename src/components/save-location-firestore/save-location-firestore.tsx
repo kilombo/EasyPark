@@ -1,5 +1,8 @@
-import { Component, Prop, State, Listen } from '@stencil/core';
-// declare var firebase: any;
+import { Component, Prop, State } from '@stencil/core';
+declare var firebase: any;
+
+// Initialize Cloud Firestore through Firebase
+const db = firebase.firestore();
 
 @Component({
   tag: 'save-location-firestore',
@@ -7,26 +10,71 @@ import { Component, Prop, State, Listen } from '@stencil/core';
 })
 export class SaveLocationFirestore {
 
-  @Prop() saveText:string = 'Save location';
-  @Prop() uid:any = null;
-  @State() latitude:any = null;
-  @State() longitude:any = null;
+  @Prop() saveText: string = 'Save location';
+  @Prop() uid: any = null;
+  @State() latitude: any = null;
+  @State() longitude: any = null;
 
-  @Listen('uidObtained')
-  uidObtainedHandler(event: CustomEvent) {
-    console.log('Received the custom uidObtained event: ', event.detail);
+
+
+  async getUserCar(uid: string) {
+    let userCarRef = db.collection('userCars');
+    // Create a query against the collection.
+    await userCarRef.where('uid', '==', uid).where('selected', '==', true).get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, ' => ', doc.data());
+          return doc.id;
+        });
+      })
+      .catch((error) => {
+        console.log('Error getting documents: ', error);
+      });
   }
 
-  saveCoords(){
-    console.log('Saving coords on Firestore');
-    console.log(this.uid);
+  async saveCoords() {
+    console.log('uid', this.uid);
+
+    this.getUserCar(this.uid).then((carId) => {
+      console.log('getUserCar finished', carId);
+      db.collection('userCoordsCars').doc(this.uid).collection('coordsCars').doc('uLiKL3c2sdbqYPWbGMQM').set({
+        'latitude': this.latitude,
+        'longitude': this.longitude
+      })
+        .then(() => {
+          console.log("Document successfully updated!");
+        }).catch((error) => {
+          console.log("Error updating documents: ", error);
+        });
+    });
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }
+
+  showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude);
+    console.log("Longitude: " + position.coords.longitude);
+    this.latitude = position.coords.latitude;
+    this.longitude = position.coords.longitude;
+    this.saveCoords();
   }
 
   render() {
-    return (
-      <container>
-        <ion-button onClick={() => this.saveCoords()}>{this.saveText}</ion-button>
-      </container>
-    );
+    if (this.uid) {
+      return (
+        <container>
+          <ion-button onClick={() => this.getLocation()}>{this.saveText}</ion-button>
+        </container>
+      );
+    } else {
+      return (null);
+    }
   }
 }
