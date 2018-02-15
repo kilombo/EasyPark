@@ -33,7 +33,9 @@ export class UserCars {
   }
 
   componentDidLoad() {
-    this.uid = firebase.auth().currentUser.uid;
+    if(firebase.auth().currentUser){
+      this.uid = firebase.auth().currentUser.uid;
+    }
     this.getItems();
   }
 

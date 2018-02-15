@@ -16,7 +16,9 @@ export class SaveLocationFirestore {
   @State() longitude: any = null;
 
   componentDidLoad(){
-    this.uid = firebase.auth().currentUser.uid;
+    if(firebase.auth().currentUser){
+      this.uid = firebase.auth().currentUser.uid;
+    }
   }
 
   async getUserCar(uid: string) {
