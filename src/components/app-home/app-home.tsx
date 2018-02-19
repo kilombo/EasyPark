@@ -13,7 +13,6 @@ export class AppHome {
         <header-component></header-component>
         <ion-content>
           <login-firebase></login-firebase>
-          
         </ion-content>
         <footer-component></footer-component>
       </ion-page>

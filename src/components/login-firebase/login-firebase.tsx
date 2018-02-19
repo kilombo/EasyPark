@@ -14,7 +14,6 @@ export class LoginFirebase {
   @State() uid: string;
   @Event() uidObtained: EventEmitter;
 
-
   handleEmailChange(event) {
     this.email = event.target.value;
   }
@@ -25,10 +24,15 @@ export class LoginFirebase {
 
   componentDidLoad() {
     this.showResetPassword = false;
-    console.log(firebase.auth().currentUser);
-    if (firebase.auth().currentUser) {
-      this.userLogged = true;
-    }
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        this.userLogged = true;
+      } else {
+        // User is signed out.
+        this.userLogged = false;
+      }
+    });
   }
 
   doLogin() {
@@ -36,7 +40,6 @@ export class LoginFirebase {
       .then((data) => {
         this.userLogged = true;
         this.uid = data.uid;
-        this.uidObtained.emit(data.uid);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -50,7 +53,7 @@ export class LoginFirebase {
   doLogout() {
     firebase.auth().signOut().then(() => {
       // Sign-out successful.
-      this.userLogged = false;;
+      this.userLogged = false;
     }).catch((error) => {
       // An error happened.
       console.error(error);

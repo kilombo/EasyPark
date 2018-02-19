@@ -11,14 +11,20 @@ const db = firebase.firestore();
 export class SaveLocationFirestore {
 
   @Prop() saveText: string = 'Save location';
+  @Prop() action: string = 'save_car_location';
   @State() uid: any = null;
   @State() latitude: any = null;
   @State() longitude: any = null;
 
-  componentDidLoad(){
-    if(firebase.auth().currentUser){
-      this.uid = firebase.auth().currentUser.uid;
-    }
+  componentDidLoad() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        this.uid = user.uid
+      } else {
+        // User is signed out.
+      }
+    });
   }
 
   async getUserCar(uid: string) {
@@ -35,6 +41,20 @@ export class SaveLocationFirestore {
           }, { merge: true })
             .then(() => {
               console.log("Document successfully updated!");
+              if(this.action === 'save_free_parking'){
+                db.collection('freeParkings').add({
+                  'latitude': this.latitude,
+                  'longitude': this.longitude,
+                  'uid': this.uid,
+                  'userCar': doc.id,
+                  'created': firebase.firestore.FieldValue.serverTimestamp(),
+                })
+                  .then(() => {
+                    console.log("Free parking successfully saved!");
+                  }).catch((error) => {
+                    console.log("Error updating documents: ", error);
+                  });
+              }
             }).catch((error) => {
               console.log("Error updating documents: ", error);
             });

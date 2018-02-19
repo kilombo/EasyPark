@@ -40,16 +40,11 @@ export class MyApp {
       <ion-app>
         <main>
           <stencil-router>
-            <stencil-route url='/' component='app-home' exact={true}>
-            </stencil-route>
-
-            <stencil-route url='/profile/:name' component='app-profile'>
-            </stencil-route>
-
-            <stencil-route url='/user-cars' component='app-user-cars'></stencil-route>
-            <stencil-route url='/contact' component='app-contact'></stencil-route>
-            <stencil-route url='/map' component='app-map'></stencil-route>
-
+            <stencil-route url='/' component='app-home' exact={true}></stencil-route>
+            <stencil-route url={['/profile/:name','/profile/:name/']} component='app-profile'></stencil-route>
+            <stencil-route url={['/user-cars','/user-cars/']} component='app-user-cars'></stencil-route>
+            <stencil-route url={['/contact','/contact/']} component='app-contact'></stencil-route>
+            <stencil-route url={['/map','/map/']} component='app-map'></stencil-route>
           </stencil-router>
         </main>
       </ion-app>

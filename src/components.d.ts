@@ -436,6 +436,7 @@ declare global {
   }
   namespace JSXElements {
     export interface SaveLocationFirestoreAttributes extends HTMLAttributes {
+      action?: string;
       saveText?: string;
     }
   }

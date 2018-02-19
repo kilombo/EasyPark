@@ -27,8 +27,16 @@ export class MapComponent {
         position: userCarCoords,
         map: map
       });
+      db.collection('freeParkings')
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          new google.maps.Marker({
+            position: { lat: doc.data().latitude, lng: doc.data().longitude },
+            map: map
+          });
+        });
+      });
     }
-
   }
 
   getUserCarCoords() {
@@ -42,10 +50,18 @@ export class MapComponent {
       });
   }
 
-  async componentDidLoad() {
-    this.uid = await firebase.auth().currentUser.uid;
-    this.getUserCarCoords();
+  componentDidLoad() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        this.uid = user.uid
+        this.getUserCarCoords();
+      } else {
+        // User is signed out.
+      }
+    });
   }
+
   render() {
     return (
       <div id="map"></div>
