@@ -33,15 +33,20 @@ export class UserCars {
   }
 
   componentDidLoad() {
-    if(firebase.auth().currentUser){
+    if (firebase.auth().currentUser) {
       this.uid = firebase.auth().currentUser.uid;
     }
     this.getItems();
   }
 
+  removeCar(carId) {
+    db.collection('userCars').doc(carId).delete().then(()=>{
+      console.log('userCar removed');
+    }).catch((error)=>{console.error(error)});
+  }
+
   selectCar(carId) {
     console.log('selectCar', carId);
-
     // Unselect the current Car.
     db.collection('userCars').where('selected', '==', true).where('uid', '==', this.uid)
       .get().then((querySnapshot) => {
@@ -89,11 +94,12 @@ export class UserCars {
                   ? null
                   : <button ion-button color="primary" onClick={() => this.selectCar(item.carId)}><ion-icon name="checkmark"></ion-icon> Seleccionar</button>
                 }
-                <button ion-button color="primary"><ion-icon name="remove"></ion-icon> Eliminar</button>
+                <button ion-button color="primary" onClick={() => this.removeCar(item.carId)}><ion-icon name="remove"></ion-icon> Eliminar</button>
               </ion-item-options>
             </ion-item-sliding>
           )}
         </ion-list>
+        <stencil-route-link url='/add-edit-user-car'><ion-button>Añadir coche</ion-button></stencil-route-link>
       </container>
     );
   }

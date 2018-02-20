@@ -21,19 +21,19 @@ export class ContactForm {
     console.log('comments:', this.comments);
     // send data to our backend
 
-    if(this.name && this.email && this.comments){
+    if (this.name && this.email && this.comments) {
       db.collection('contactMessages').add({
         'name': this.name,
         'email': this.email,
         'comments': this.comments,
-        'created': new Date()
+        'created': firebase.firestore.FieldValue.serverTimestamp(),
       })
         .then(() => {
           console.log("Document successfully updated!");
         }).catch((error) => {
           console.log("Error updating documents: ", error);
         });
-    }else{
+    } else {
       console.error('Error on data');
     }
   }

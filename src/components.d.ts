@@ -6,6 +6,7 @@
 
 import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 
 declare global {
@@ -15,6 +16,36 @@ declare global {
   }
 }
 
+
+
+import {
+  AppAddEditUserCar as AppAddEditUserCar
+} from './components/app-add-edit-user-car/app-add-edit-user-car';
+
+declare global {
+  interface HTMLAppAddEditUserCarElement extends AppAddEditUserCar, HTMLStencilElement {
+  }
+  var HTMLAppAddEditUserCarElement: {
+    prototype: HTMLAppAddEditUserCarElement;
+    new (): HTMLAppAddEditUserCarElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-add-edit-user-car": HTMLAppAddEditUserCarElement;
+  }
+  interface ElementTagNameMap {
+    "app-add-edit-user-car": HTMLAppAddEditUserCarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-add-edit-user-car": JSXElements.AppAddEditUserCarAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppAddEditUserCarAttributes extends HTMLAttributes {
+      history?: RouterHistory;
+    }
+  }
+}
 
 
 import {
