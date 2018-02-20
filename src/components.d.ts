@@ -43,6 +43,7 @@ declare global {
   namespace JSXElements {
     export interface AppAddEditUserCarAttributes extends HTMLAttributes {
       history?: RouterHistory;
+      match?: MatchResults;
     }
   }
 }
@@ -73,6 +74,36 @@ declare global {
   namespace JSXElements {
     export interface AppContactAttributes extends HTMLAttributes {
       
+    }
+  }
+}
+
+
+import {
+  AppEditUserCar as AppEditUserCar
+} from './components/app-edit-user-car/app-edit-user-car';
+
+declare global {
+  interface HTMLAppEditUserCarElement extends AppEditUserCar, HTMLStencilElement {
+  }
+  var HTMLAppEditUserCarElement: {
+    prototype: HTMLAppEditUserCarElement;
+    new (): HTMLAppEditUserCarElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-edit-user-car": HTMLAppEditUserCarElement;
+  }
+  interface ElementTagNameMap {
+    "app-edit-user-car": HTMLAppEditUserCarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-edit-user-car": JSXElements.AppEditUserCarAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppEditUserCarAttributes extends HTMLAttributes {
+      match?: MatchResults;
     }
   }
 }

@@ -94,6 +94,7 @@ export class UserCars {
                   ? null
                   : <button ion-button color="primary" onClick={() => this.selectCar(item.carId)}><ion-icon name="checkmark"></ion-icon> Seleccionar</button>
                 }
+                {/* <stencil-route-link url={'/edit-user-car/'+item.carId}><button ion-button color="primary"><ion-icon name="create"></ion-icon> Editar</button></stencil-route-link> */}
                 <button ion-button color="primary" onClick={() => this.removeCar(item.carId)}><ion-icon name="remove"></ion-icon> Eliminar</button>
               </ion-item-options>
             </ion-item-sliding>

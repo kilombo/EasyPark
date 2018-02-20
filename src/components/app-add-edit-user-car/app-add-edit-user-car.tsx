@@ -1,5 +1,5 @@
 import { Component, State, Prop } from '@stencil/core';
-import { RouterHistory } from '@stencil/router';
+import { RouterHistory, MatchResults } from '@stencil/router';
 declare var firebase: any;
 
 // Initialize Cloud Firestore through Firebase
@@ -16,8 +16,10 @@ export class AppAddEditUserCar {
   @State() model: string;
   @State() uid: string;
   @Prop() history: RouterHistory;
+  @Prop() match: MatchResults;
 
   componentDidLoad() {
+    // console.log(this.match.params);
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
@@ -83,6 +85,7 @@ export class AppAddEditUserCar {
       <ion-page>
         <header-component></header-component>
         <ion-content>
+          <h2>CarId: {this.match.params.car}</h2>
           <form onSubmit={(e) => this.handleSubmit(e)}>
             <ion-list>
               <ion-item>

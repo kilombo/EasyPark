@@ -46,6 +46,7 @@ export class MyApp {
             <stencil-route url={['/contact','/contact/']} component='app-contact'></stencil-route>
             <stencil-route url={['/map','/map/']} component='app-map'></stencil-route>
             <stencil-route url={['/add-edit-user-car','/add-edit-user-car/']} component='app-add-edit-user-car'></stencil-route>
+            <stencil-route url={['/edit-user-car/:car','/edit-user-car/:car/']} component='app-edit-user-car'></stencil-route>
           </stencil-router>
         </main>
       </ion-app>
