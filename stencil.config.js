@@ -1,13 +1,14 @@
+const sass = require('@stencil/sass');
+
 exports.config = {
-  collections: [
-    { name: '@stencil/router' },
-    { name: '@ionic/core' }
-  ],
   serviceWorker: {
     swSrc: 'src/sw.js'
   },
   globalStyle: 'src/global/app.scss',
-  enableCache: true
+  enableCache: true,
+  plugins: [
+    sass()
+  ]
 };
 
 exports.devServer = {

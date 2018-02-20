@@ -4,6 +4,8 @@ declare var firebase: any;
 // Initialize Cloud Firestore through Firebase
 const db = firebase.firestore();
 
+const userCarRef = db.collection('userCars');
+
 @Component({
   tag: 'save-location-firestore',
   styleUrl: 'save-location-firestore.scss'
@@ -13,6 +15,7 @@ export class SaveLocationFirestore {
   @Prop() saveText: string = 'Save location';
   @Prop() action: string = 'save_car_location';
   @State() uid: any = null;
+  @State() userCarId: any = null;
   @State() latitude: any = null;
   @State() longitude: any = null;
 
@@ -28,33 +31,18 @@ export class SaveLocationFirestore {
   }
 
   async getUserCar(uid: string) {
-    let userCarRef = db.collection('userCars');
-    // Create a query against the collection.
+    console.log('getting user car');
     await userCarRef.where('uid', '==', uid).where('selected', '==', true).get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
           console.log(doc.id, ' => ', doc.data());
+          this.userCarId = doc.id;
           db.collection('userCars').doc(doc.id).set({
             'latitude': this.latitude,
             'longitude': this.longitude
           }, { merge: true })
             .then(() => {
               console.log("Document successfully updated!");
-              if(this.action === 'save_free_parking'){
-                db.collection('freeParkings').add({
-                  'latitude': this.latitude,
-                  'longitude': this.longitude,
-                  'uid': this.uid,
-                  'userCar': doc.id,
-                  'created': firebase.firestore.FieldValue.serverTimestamp(),
-                })
-                  .then(() => {
-                    console.log("Free parking successfully saved!");
-                  }).catch((error) => {
-                    console.log("Error updating documents: ", error);
-                  });
-              }
             }).catch((error) => {
               console.log("Error updating documents: ", error);
             });
@@ -65,9 +53,38 @@ export class SaveLocationFirestore {
       });
   }
 
+  saveFreeParking(){
+    console.log('saving parking');
+    db.collection('freeParkings').add({
+      'latitude': this.latitude,
+      'longitude': this.longitude,
+      'uid': this.uid,
+      'created': firebase.firestore.FieldValue.serverTimestamp(),
+    })
+      .then(() => {
+        console.log("Free parking successfully saved!");
+        db.collection('userCars').doc('uLiKL3c2sdbqYPWbGMQM').set({
+          'latitude': null,
+          'longitude': null
+        }, { merge: true })
+          .then(() => {
+            console.log("Document successfully updated!");
+          }).catch((error) => {
+            console.log("Error updating documents: ", error);
+          });
+      }).catch((error) => {
+        console.log("Error updating documents: ", error);
+      });
+  }
+
   async saveCoords() {
     console.log('uid', this.uid);
+    if(this.action !== 'save_free_parking'){
     this.getUserCar(this.uid);
+    }
+    if(this.action === 'save_free_parking'){
+      this.saveFreeParking();
+    }
   }
 
   getLocation() {
