@@ -140,6 +140,36 @@ declare global {
 
 
 import {
+  AppLoginFirebase as AppLoginFirebase
+} from './components/app-login-firebase/app-login-firebase';
+
+declare global {
+  interface HTMLAppLoginFirebaseElement extends AppLoginFirebase, HTMLStencilElement {
+  }
+  var HTMLAppLoginFirebaseElement: {
+    prototype: HTMLAppLoginFirebaseElement;
+    new (): HTMLAppLoginFirebaseElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-login-firebase": HTMLAppLoginFirebaseElement;
+  }
+  interface ElementTagNameMap {
+    "app-login-firebase": HTMLAppLoginFirebaseElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-login-firebase": JSXElements.AppLoginFirebaseAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppLoginFirebaseAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
   AppMap as AppMap
 } from './components/app-map/app-map';
 
@@ -194,6 +224,36 @@ declare global {
   namespace JSXElements {
     export interface AppProfileAttributes extends HTMLAttributes {
       match?: MatchResults;
+    }
+  }
+}
+
+
+import {
+  AppRegisterFirebase as AppRegisterFirebase
+} from './components/app-register-firebase/app-register-firebase';
+
+declare global {
+  interface HTMLAppRegisterFirebaseElement extends AppRegisterFirebase, HTMLStencilElement {
+  }
+  var HTMLAppRegisterFirebaseElement: {
+    prototype: HTMLAppRegisterFirebaseElement;
+    new (): HTMLAppRegisterFirebaseElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-register-firebase": HTMLAppRegisterFirebaseElement;
+  }
+  interface ElementTagNameMap {
+    "app-register-firebase": HTMLAppRegisterFirebaseElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-register-firebase": JSXElements.AppRegisterFirebaseAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppRegisterFirebaseAttributes extends HTMLAttributes {
+      
     }
   }
 }
@@ -464,6 +524,36 @@ declare global {
   }
   namespace JSXElements {
     export interface MyAppAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
+  RegisterFirebase as RegisterFirebase
+} from './components/register-firebase/register-firebase';
+
+declare global {
+  interface HTMLRegisterFirebaseElement extends RegisterFirebase, HTMLStencilElement {
+  }
+  var HTMLRegisterFirebaseElement: {
+    prototype: HTMLRegisterFirebaseElement;
+    new (): HTMLRegisterFirebaseElement;
+  };
+  interface HTMLElementTagNameMap {
+    "register-firebase": HTMLRegisterFirebaseElement;
+  }
+  interface ElementTagNameMap {
+    "register-firebase": HTMLRegisterFirebaseElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "register-firebase": JSXElements.RegisterFirebaseAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface RegisterFirebaseAttributes extends HTMLAttributes {
       
     }
   }
