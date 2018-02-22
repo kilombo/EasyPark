@@ -253,7 +253,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppRegisterFirebaseAttributes extends HTMLAttributes {
-      
+      history?: RouterHistory;
     }
   }
 }
@@ -494,7 +494,7 @@ declare global {
   }
   namespace JSXElements {
     export interface MenuLinksAttributes extends HTMLAttributes {
-      history?: RouterHistory;
+      
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, State } from '@stencil/core';
+import { Component, State, Event, EventEmitter  } from '@stencil/core';
 declare var firebase: any;
 
 @Component({
@@ -10,6 +10,7 @@ export class RegisterFirebase {
   @State() password: string = null;
   @State() userLogged: boolean = false;
   @State() uid: string;
+  @Event() signUpCompleted: EventEmitter;
 
   handleEmailChange(event) {
     this.email = event.target.value;
@@ -36,6 +37,7 @@ export class RegisterFirebase {
       .then((data) => {
         this.userLogged = true;
         this.uid = data.uid;
+        this.signUpCompleted.emit(data.uid);
       })
       .catch((error) => {
         // Handle Errors here.
