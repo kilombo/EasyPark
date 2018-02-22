@@ -6,7 +6,7 @@
     ],
     "target": "es6",
     "noImplicitAny": false,
-    "outDir": "functions/lib",
+    "outDir": "lib",
     "stripInternal": true,
     "inlineSourceMap": false,
     "strictNullChecks": false,
