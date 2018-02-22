@@ -41,9 +41,7 @@ export class SaveLocationFirestore {
             'latitude': this.latitude,
             'longitude': this.longitude
           }, { merge: true })
-            .then(() => {
-              console.log("Document successfully updated!");
-            }).catch((error) => {
+            .then().catch((error) => {
               console.log("Error updating documents: ", error);
             });
         });
@@ -53,7 +51,7 @@ export class SaveLocationFirestore {
       });
   }
 
-  saveFreeParking(){
+  saveFreeParking() {
     console.log('saving parking');
     db.collection('freeParkings').add({
       'latitude': this.latitude,
@@ -63,14 +61,18 @@ export class SaveLocationFirestore {
     })
       .then(() => {
         console.log("Free parking successfully saved!");
-        db.collection('userCars').doc('uLiKL3c2sdbqYPWbGMQM').set({
-          'latitude': null,
-          'longitude': null
-        }, { merge: true })
-          .then(() => {
-            console.log("Document successfully updated!");
-          }).catch((error) => {
-            console.log("Error updating documents: ", error);
+        userCarRef.where('uid', '==', this.uid).where('selected', '==', true).get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              this.userCarId = doc.id;
+            });
+            db.collection('userCars').doc(this.userCarId).set({
+              'latitude': null,
+              'longitude': null
+            }, { merge: true })
+              .then().catch((error) => {
+                console.log("Error updating documents: ", error);
+              });
           });
       }).catch((error) => {
         console.log("Error updating documents: ", error);
@@ -79,10 +81,10 @@ export class SaveLocationFirestore {
 
   async saveCoords() {
     console.log('uid', this.uid);
-    if(this.action !== 'save_free_parking'){
-    this.getUserCar(this.uid);
+    if (this.action !== 'save_free_parking') {
+      this.getUserCar(this.uid);
     }
-    if(this.action === 'save_free_parking'){
+    if (this.action === 'save_free_parking') {
       this.saveFreeParking();
     }
   }

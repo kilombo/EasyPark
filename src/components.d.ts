@@ -494,7 +494,7 @@ declare global {
   }
   namespace JSXElements {
     export interface MenuLinksAttributes extends HTMLAttributes {
-      
+      history?: RouterHistory;
     }
   }
 }
