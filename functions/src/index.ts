@@ -55,3 +55,32 @@ export const sendEmailContactAlert = functions.firestore.document("contactMessag
     throw new Error(error);
   }
 });
+
+/**
+ * On user created
+ * @type {CloudFunction<UserRecord>}
+ */
+export const created = functions.auth.user().onCreate(async (event) => {
+  const user = event.data;
+  const name = user.displayName ? user.displayName : null;
+  const email = user.email ? user.email : null;
+  const providerData = user.providerData ? user.providerData : null;
+  const photoURL = user.photoURL ? user.photoURL : null;
+
+  const emailSubject = 'EasyPark - Nuevo usuario registrado!';
+  const emailText = `
+  Se ha registrado un nuevo usuario!
+
+  uid: ${user.uid}
+
+  Datos del usuario:
+  Nombre: ${name}
+  Email: ${email}`;
+
+  try {
+    await sendAdminEmail(emailSubject, emailText);
+
+  } catch (error) {
+    throw new Error(error);
+  }
+});
