@@ -1,8 +1,8 @@
 {
   "name": "@stencil/starter",
   "private": true,
-  "version": "0.0.1",
-  "description": "Stencil App Starter",
+  "version": "0.1.0",
+  "description": "EasyPark",
   "files": [
     "dist/"
   ],
