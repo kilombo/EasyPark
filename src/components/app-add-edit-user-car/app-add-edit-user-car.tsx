@@ -37,34 +37,21 @@ export class AppAddEditUserCar {
   }
 
   handleSubmit(e) {
-    e.preventDefault()
-
+    e.preventDefault();
     if (this.brand && this.model) {
       // Removing old selected
       userCarRef.where('uid', '==', this.uid).where('selected', '==', true).get()
         .then((querySnapshot) => {
+          if (querySnapshot.empty) {
+            this.saveUserCar();
+          }
           querySnapshot.forEach((doc) => {
             console.log(doc.id, ' => ', doc.data());
-            db.collection('userCars').doc(doc.id).set({
+            userCarRef.doc(doc.id).set({
               'selected': false,
             }, { merge: true })
               .then(() => {
-                console.log("Document successfully updated!");
-                // Save new car
-                db.collection('userCars').doc().set({
-                  'brand': this.brand,
-                  'model': this.model,
-                  'selected': true,
-                  'created': firebase.firestore.FieldValue.serverTimestamp(),
-                  'uid': this.uid,
-                }, { merge: true })
-                  .then(() => {
-                    console.log("Document successfully saved!");
-                    // Redirect to user cars page.
-                    this.history.goBack();
-                  }).catch((error) => {
-                    console.log("Error updating documents: ", error);
-                  });
+                this.saveUserCar();
               }).catch((error) => {
                 console.log("Error updating documents: ", error);
               });
@@ -73,11 +60,26 @@ export class AppAddEditUserCar {
         .catch((error) => {
           console.log('Error getting documents: ', error);
         });
-
-
     } else {
       console.error('Error on data');
     }
+  }
+
+  saveUserCar() {
+    // Save new car
+    userCarRef.doc().set({
+      'brand': this.brand,
+      'model': this.model,
+      'selected': true,
+      'created': firebase.firestore.FieldValue.serverTimestamp(),
+      'uid': this.uid,
+    })
+      .then(() => {
+        // Redirect to user cars page.
+        this.history.goBack();
+      }).catch((error) => {
+        console.log("Error updating documents: ", error);
+      });
   }
 
   render() {
@@ -85,7 +87,6 @@ export class AppAddEditUserCar {
       <ion-page>
         <header-component></header-component>
         <ion-content>
-          <h2>CarId: {this.match.params.car}</h2>
           <form onSubmit={(e) => this.handleSubmit(e)}>
             <ion-list>
               <ion-item>

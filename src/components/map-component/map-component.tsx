@@ -19,20 +19,22 @@ export class MapComponent {
   @State() userCarCoords: object = null;
 
   initMap() {
-    let userCarCoords = { lat: this.userCarLatitude, lng: this.userCarLongitude };
+    // let userCarMarker;
+    // let userCarCoords = { lat: this.userCarLatitude, lng: this.userCarLongitude };
     let userCoords = { lat: this.userLatitude, lng: this.userLongitude };
     if (document.getElementById('map') && userCoords.lat && userCoords.lng) {
       let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
         center: userCoords
       });
-      if (userCarCoords.lat && userCarCoords.lng) {
-        new google.maps.Marker({
-          position: userCarCoords,
-          icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-pushpin.png',
-          map: map
-        });
-      }
+
+      // if (userCarCoords.lat && userCarCoords.lng) {
+      //   userCarMarker = new google.maps.Marker({
+      //     position: userCarCoords,
+      //     icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-pushpin.png',
+      //     map: map
+      //   });
+      // }
       // let userCarInfowindow = new google.maps.InfoWindow({
       //   content: `<div>
       //           Tu coche
@@ -59,6 +61,36 @@ export class MapComponent {
             marker.addListener('click', function () {
               infowindow.open(map, marker);
             });
+          });
+        });
+        db.collection('userCars').where('uid', '==', this.uid)
+        .onSnapshot((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            let carData = doc.data();
+            if(carData.latitude && carData.longitude){
+              let marker = new google.maps.Marker({
+                position: { lat: doc.data().latitude, lng: doc.data().longitude },
+                map: map,
+                icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-pushpin.png',
+              });
+              let infoWindowContent;
+              if(carData.updated){
+                infoWindowContent = `
+                <div>Tu coche: ${carData.brand} ${carData.model}</div>
+                <div>Aparcado: ${carData.updated}</div>
+                `;
+              }else{
+                infoWindowContent = `
+                <div>Tu coche: ${carData.brand} ${carData.model}</div>
+                `;
+              }
+              let infowindow = new google.maps.InfoWindow({
+                content: infoWindowContent,
+              });
+              marker.addListener('click', function () {
+                infowindow.open(map, marker);
+              });
+            }
           });
         });
     }

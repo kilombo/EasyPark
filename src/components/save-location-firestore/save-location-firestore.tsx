@@ -39,7 +39,8 @@ export class SaveLocationFirestore {
           this.userCarId = doc.id;
           db.collection('userCars').doc(doc.id).set({
             'latitude': this.latitude,
-            'longitude': this.longitude
+            'longitude': this.longitude,
+            'updated': firebase.firestore.FieldValue.serverTimestamp()
           }, { merge: true })
             .then().catch((error) => {
               console.log("Error updating documents: ", error);
@@ -68,7 +69,8 @@ export class SaveLocationFirestore {
             });
             db.collection('userCars').doc(this.userCarId).set({
               'latitude': null,
-              'longitude': null
+              'longitude': null,
+              'updated': firebase.firestore.FieldValue.serverTimestamp()
             }, { merge: true })
               .then().catch((error) => {
                 console.log("Error updating documents: ", error);
