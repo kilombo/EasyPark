@@ -19,30 +19,12 @@ export class MapComponent {
   @State() userCarCoords: object = null;
 
   initMap() {
-    // let userCarMarker;
-    // let userCarCoords = { lat: this.userCarLatitude, lng: this.userCarLongitude };
     let userCoords = { lat: this.userLatitude, lng: this.userLongitude };
     if (document.getElementById('map') && userCoords.lat && userCoords.lng) {
       let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
         center: userCoords
       });
-
-      // if (userCarCoords.lat && userCarCoords.lng) {
-      //   userCarMarker = new google.maps.Marker({
-      //     position: userCarCoords,
-      //     icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-pushpin.png',
-      //     map: map
-      //   });
-      // }
-      // let userCarInfowindow = new google.maps.InfoWindow({
-      //   content: `<div>
-      //           Tu coche
-      //           </div>`,
-      // });
-      // userCarMarker.addListener('click', function () {
-      //   userCarInfowindow.open(map, userCarMarker);
-      // });
       db.collection('freeParkings')
         .onSnapshot((querySnapshot) => {
           querySnapshot.forEach((doc) => {
@@ -113,7 +95,6 @@ export class MapComponent {
         // User is signed in.
         this.uid = user.uid;
         this.getLocation();
-
       } else {
         // User is signed out.
       }
