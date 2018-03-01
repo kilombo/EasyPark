@@ -16,8 +16,8 @@
     "test.watch": "jest --watch --no-cache"
   },
   "dependencies": {
-    "@ionic/core": "next",
-    "@stencil/core": "^0.6.1",
+    "@ionic/core": "^0.0.3",
+    "@stencil/core": "^0.6.13",
     "@stencil/router": "latest",
     "@types/googlemaps": "^3.30.7",
     "firebase": "^4.8.2",
