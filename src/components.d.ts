@@ -452,6 +452,36 @@ declare global {
 
 
 import {
+  LoginGoogleFirebase as LoginGoogleFirebase
+} from './components/login-google-firebase/login-google-firebase';
+
+declare global {
+  interface HTMLLoginGoogleFirebaseElement extends LoginGoogleFirebase, HTMLStencilElement {
+  }
+  var HTMLLoginGoogleFirebaseElement: {
+    prototype: HTMLLoginGoogleFirebaseElement;
+    new (): HTMLLoginGoogleFirebaseElement;
+  };
+  interface HTMLElementTagNameMap {
+    "login-google-firebase": HTMLLoginGoogleFirebaseElement;
+  }
+  interface ElementTagNameMap {
+    "login-google-firebase": HTMLLoginGoogleFirebaseElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "login-google-firebase": JSXElements.LoginGoogleFirebaseAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface LoginGoogleFirebaseAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
   MapComponent as MapComponent
 } from './components/map-component/map-component';
 
