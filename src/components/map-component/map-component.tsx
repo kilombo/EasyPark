@@ -5,6 +5,9 @@ declare var firebase: any;
 // Initialize Cloud Firestore through Firebase
 const db = firebase.firestore();
 
+
+let map;
+
 @Component({
   tag: 'map-component',
   styleUrl: 'map-component.scss'
@@ -18,10 +21,11 @@ export class MapComponent {
   @State() uid: string = null;
   @State() userCarCoords: object = null;
 
+
   initMap() {
     let userCoords = { lat: this.userLatitude, lng: this.userLongitude };
     if (document.getElementById('map') && userCoords.lat && userCoords.lng) {
-      let map = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
         center: userCoords
       });
@@ -45,23 +49,23 @@ export class MapComponent {
             });
           });
         });
-        db.collection('userCars').where('uid', '==', this.uid)
+      db.collection('userCars').where('uid', '==', this.uid)
         .onSnapshot((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             let carData = doc.data();
-            if(carData.latitude && carData.longitude){
+            if (carData.latitude && carData.longitude) {
               let marker = new google.maps.Marker({
                 position: { lat: doc.data().latitude, lng: doc.data().longitude },
                 map: map,
                 icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-pushpin.png',
               });
               let infoWindowContent;
-              if(carData.updated){
+              if (carData.updated) {
                 infoWindowContent = `
                 <div>Tu coche: ${carData.brand} ${carData.model}</div>
                 <div>Aparcado: ${carData.updated}</div>
                 `;
-              }else{
+              } else {
                 infoWindowContent = `
                 <div>Tu coche: ${carData.brand} ${carData.model}</div>
                 `;
@@ -113,9 +117,17 @@ export class MapComponent {
     }
   }
 
+  centerMapUserCar() {
+    map.setCenter({lat:this.userCarLatitude, lng:this.userCarLongitude});
+  }
+
   render() {
     return (
-      <div id="map"></div>
+      <container>
+        <div id="map"></div>
+        <ion-button onClick={() => this.centerMapUserCar()}>Centrar mapa en mi coche</ion-button>
+      </container>
+
     );
   }
 }
