@@ -30,7 +30,7 @@ export class LoginGoogleFirebase {
     return (
       <container>
         <ion-button onClick={() => this.login()} expand='block' color='primary'>Login with Google</ion-button>
-        <ion-button onClick={() => this.loginFacebook()} expand='block' color='primary'>Login with Facebook</ion-button>
+        {/* <ion-button onClick={() => this.loginFacebook()} expand='block' color='primary'>Login with Facebook</ion-button> */}
       </container>
     );
   }
