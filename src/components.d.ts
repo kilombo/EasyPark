@@ -55,6 +55,7 @@ declare global {
     export interface AppAddEditUserCarAttributes extends HTMLAttributes {
       history?: RouterHistory;
       match?: MatchResults;
+      
     }
   }
 }
@@ -84,6 +85,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppContactAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -115,6 +117,7 @@ declare global {
   namespace JSXElements {
     export interface AppEditUserCarAttributes extends HTMLAttributes {
       match?: MatchResults;
+      
     }
   }
 }
@@ -144,6 +147,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppHomeAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -175,6 +179,7 @@ declare global {
   namespace JSXElements {
     export interface AppLoginFirebaseAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -204,6 +209,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppMapAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -235,6 +241,7 @@ declare global {
   namespace JSXElements {
     export interface AppProfileAttributes extends HTMLAttributes {
       match?: MatchResults;
+      
     }
   }
 }
@@ -265,6 +272,7 @@ declare global {
   namespace JSXElements {
     export interface AppRegisterFirebaseAttributes extends HTMLAttributes {
       history?: RouterHistory;
+      
     }
   }
 }
@@ -294,6 +302,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppUserCarsAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -325,6 +334,7 @@ declare global {
   namespace JSXElements {
     export interface ContactFormAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -355,6 +365,7 @@ declare global {
   namespace JSXElements {
     export interface FooterComponentAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -384,6 +395,7 @@ declare global {
   }
   namespace JSXElements {
     export interface HeaderComponentAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -416,6 +428,7 @@ declare global {
     export interface LazyImgAttributes extends HTMLAttributes {
       alt?: string;
       src?: string;
+      onLazyImgloaded?: (event: CustomEvent<HTMLImageElement>) => void;
     }
   }
 }
@@ -445,6 +458,7 @@ declare global {
   }
   namespace JSXElements {
     export interface LoginFirebaseAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -476,6 +490,7 @@ declare global {
   namespace JSXElements {
     export interface LoginGoogleFirebaseAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -505,6 +520,7 @@ declare global {
   }
   namespace JSXElements {
     export interface MapComponentAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -536,6 +552,7 @@ declare global {
   namespace JSXElements {
     export interface MenuLinksAttributes extends HTMLAttributes {
       
+      
     }
   }
 }
@@ -565,6 +582,7 @@ declare global {
   }
   namespace JSXElements {
     export interface MyAppAttributes extends HTMLAttributes {
+      
       
     }
   }
@@ -596,6 +614,7 @@ declare global {
   namespace JSXElements {
     export interface RegisterFirebaseAttributes extends HTMLAttributes {
       
+      onSignUpCompleted?: (event: CustomEvent) => void;
     }
   }
 }
@@ -627,6 +646,7 @@ declare global {
     export interface SaveLocationFirestoreAttributes extends HTMLAttributes {
       action?: string;
       saveText?: string;
+      
     }
   }
 }
@@ -656,6 +676,7 @@ declare global {
   }
   namespace JSXElements {
     export interface UserCarsAttributes extends HTMLAttributes {
+      
       
     }
   }
