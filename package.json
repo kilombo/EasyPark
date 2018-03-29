@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@ionic/core": "^0.1.4",
-    "@stencil/core": "0.7.7",
+    "@stencil/core": "^0.7.7",
     "@stencil/router": "latest",
     "@types/googlemaps": "^3.30.7",
     "firebase": "^4.8.2",
