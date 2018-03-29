@@ -1,4 +1,5 @@
-import { Component, State } from '@stencil/core';
+import { Component, State, Prop } from '@stencil/core';
+import { ToastController } from '@ionic/core';
 declare var firebase: any;
 
 // Initialize Cloud Firestore through Firebase
@@ -14,8 +15,10 @@ export class ContactForm {
   @State() email: string;
   @State() comments: string;
 
+  @Prop({ connect: 'ion-toast-controller' }) toastCtrl: ToastController;
+
   handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     console.log('name:', this.name);
     console.log('email:', this.email);
     console.log('comments:', this.comments);
@@ -28,8 +31,10 @@ export class ContactForm {
         'comments': this.comments,
         'created': firebase.firestore.FieldValue.serverTimestamp(),
       })
-        .then(() => {
+        .then(async () => {
           console.log("Document successfully updated!");
+          const toast = await this.toastCtrl.create({ message: 'Message sent, thanks!', duration: 1000 });
+          toast.present();
         }).catch((error) => {
           console.log("Error updating documents: ", error);
         });

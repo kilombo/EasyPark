@@ -1,4 +1,5 @@
-import { Component, State } from '@stencil/core';
+import { Component, State, Prop } from '@stencil/core';
+import { ToastController } from '@ionic/core';
 import { } from '@types/googlemaps';
 import moment from 'moment';
 declare var firebase: any;
@@ -23,6 +24,7 @@ export class MapComponent {
   @State() userCarCoords: object = null;
   @State() now: any;
 
+  @Prop({ connect: 'ion-toast-controller' }) toastCtrl: ToastController;
 
   initMap() {
     let userCoords = { lat: this.userLatitude, lng: this.userLongitude };
@@ -123,8 +125,13 @@ export class MapComponent {
     }
   }
 
-  centerMapUserCar() {
-    map.setCenter({ lat: this.userCarLatitude, lng: this.userCarLongitude });
+  async centerMapUserCar() {
+    if(!this.userCarLatitude || !this.userCarLongitude){
+      const toast = await this.toastCtrl.create({ message: 'No car coords', duration: 1000 });
+      toast.present();
+    }else{
+      map.setCenter({ lat: this.userCarLatitude, lng: this.userCarLongitude });
+    }
   }
 
   render() {
