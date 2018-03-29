@@ -1,5 +1,6 @@
 import { Component, State } from '@stencil/core';
 import { } from '@types/googlemaps';
+import moment from 'moment';
 declare var firebase: any;
 
 // Initialize Cloud Firestore through Firebase
@@ -20,6 +21,7 @@ export class MapComponent {
   @State() userLongitude: number = null;
   @State() uid: string = null;
   @State() userCarCoords: object = null;
+  @State() now: any;
 
 
   initMap() {
@@ -29,7 +31,9 @@ export class MapComponent {
         zoom: 16,
         center: userCoords
       });
+      let queryTime = moment().subtract(15, 'minutes');;
       db.collection('freeParkings')
+        .where('created', '>', queryTime.toDate())
         .onSnapshot((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             let marker = new google.maps.Marker({
@@ -94,6 +98,8 @@ export class MapComponent {
   }
 
   componentDidLoad() {
+    this.now = moment().format('LLLL');
+
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
@@ -118,7 +124,7 @@ export class MapComponent {
   }
 
   centerMapUserCar() {
-    map.setCenter({lat:this.userCarLatitude, lng:this.userCarLongitude});
+    map.setCenter({ lat: this.userCarLatitude, lng: this.userCarLongitude });
   }
 
   render() {
