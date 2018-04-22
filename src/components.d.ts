@@ -36,10 +36,16 @@ import {
 } from '@stencil/core';
 
 declare global {
-  interface HTMLAppAddEditUserCarElement extends HTMLStencilElement {
-    'history': RouterHistory;
-    'match': MatchResults;
+
+  namespace StencilComponents {
+    interface AppAddEditUserCar {
+      'history': RouterHistory;
+      'match': MatchResults;
+    }
   }
+
+  interface HTMLAppAddEditUserCarElement extends StencilComponents.AppAddEditUserCar, HTMLStencilElement {}
+
   var HTMLAppAddEditUserCarElement: {
     prototype: HTMLAppAddEditUserCarElement;
     new (): HTMLAppAddEditUserCarElement;
@@ -65,9 +71,15 @@ declare global {
 
 
 declare global {
-  interface HTMLAppContactElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface AppContact {
+
+    }
   }
+
+  interface HTMLAppContactElement extends StencilComponents.AppContact, HTMLStencilElement {}
+
   var HTMLAppContactElement: {
     prototype: HTMLAppContactElement;
     new (): HTMLAppContactElement;
@@ -92,9 +104,15 @@ declare global {
 
 
 declare global {
-  interface HTMLAppEditUserCarElement extends HTMLStencilElement {
-    'match': MatchResults;
+
+  namespace StencilComponents {
+    interface AppEditUserCar {
+      'match': MatchResults;
+    }
   }
+
+  interface HTMLAppEditUserCarElement extends StencilComponents.AppEditUserCar, HTMLStencilElement {}
+
   var HTMLAppEditUserCarElement: {
     prototype: HTMLAppEditUserCarElement;
     new (): HTMLAppEditUserCarElement;
@@ -119,9 +137,15 @@ declare global {
 
 
 declare global {
-  interface HTMLAppHomeElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface AppHome {
+
+    }
   }
+
+  interface HTMLAppHomeElement extends StencilComponents.AppHome, HTMLStencilElement {}
+
   var HTMLAppHomeElement: {
     prototype: HTMLAppHomeElement;
     new (): HTMLAppHomeElement;
@@ -146,9 +170,15 @@ declare global {
 
 
 declare global {
-  interface HTMLAppLoginFirebaseElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface AppLoginFirebase {
+
+    }
   }
+
+  interface HTMLAppLoginFirebaseElement extends StencilComponents.AppLoginFirebase, HTMLStencilElement {}
+
   var HTMLAppLoginFirebaseElement: {
     prototype: HTMLAppLoginFirebaseElement;
     new (): HTMLAppLoginFirebaseElement;
@@ -173,9 +203,15 @@ declare global {
 
 
 declare global {
-  interface HTMLAppMapElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface AppMap {
+
+    }
   }
+
+  interface HTMLAppMapElement extends StencilComponents.AppMap, HTMLStencilElement {}
+
   var HTMLAppMapElement: {
     prototype: HTMLAppMapElement;
     new (): HTMLAppMapElement;
@@ -200,9 +236,15 @@ declare global {
 
 
 declare global {
-  interface HTMLAppProfileElement extends HTMLStencilElement {
-    'match': MatchResults;
+
+  namespace StencilComponents {
+    interface AppProfile {
+      'match': MatchResults;
+    }
   }
+
+  interface HTMLAppProfileElement extends StencilComponents.AppProfile, HTMLStencilElement {}
+
   var HTMLAppProfileElement: {
     prototype: HTMLAppProfileElement;
     new (): HTMLAppProfileElement;
@@ -227,9 +269,15 @@ declare global {
 
 
 declare global {
-  interface HTMLAppRegisterFirebaseElement extends HTMLStencilElement {
-    'history': RouterHistory;
+
+  namespace StencilComponents {
+    interface AppRegisterFirebase {
+      'history': RouterHistory;
+    }
   }
+
+  interface HTMLAppRegisterFirebaseElement extends StencilComponents.AppRegisterFirebase, HTMLStencilElement {}
+
   var HTMLAppRegisterFirebaseElement: {
     prototype: HTMLAppRegisterFirebaseElement;
     new (): HTMLAppRegisterFirebaseElement;
@@ -254,9 +302,15 @@ declare global {
 
 
 declare global {
-  interface HTMLAppUserCarsElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface AppUserCars {
+
+    }
   }
+
+  interface HTMLAppUserCarsElement extends StencilComponents.AppUserCars, HTMLStencilElement {}
+
   var HTMLAppUserCarsElement: {
     prototype: HTMLAppUserCarsElement;
     new (): HTMLAppUserCarsElement;
@@ -281,9 +335,15 @@ declare global {
 
 
 declare global {
-  interface HTMLContactFormElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface ContactForm {
+
+    }
   }
+
+  interface HTMLContactFormElement extends StencilComponents.ContactForm, HTMLStencilElement {}
+
   var HTMLContactFormElement: {
     prototype: HTMLContactFormElement;
     new (): HTMLContactFormElement;
@@ -308,9 +368,15 @@ declare global {
 
 
 declare global {
-  interface HTMLFooterComponentElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface FooterComponent {
+
+    }
   }
+
+  interface HTMLFooterComponentElement extends StencilComponents.FooterComponent, HTMLStencilElement {}
+
   var HTMLFooterComponentElement: {
     prototype: HTMLFooterComponentElement;
     new (): HTMLFooterComponentElement;
@@ -335,9 +401,15 @@ declare global {
 
 
 declare global {
-  interface HTMLHeaderComponentElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface HeaderComponent {
+
+    }
   }
+
+  interface HTMLHeaderComponentElement extends StencilComponents.HeaderComponent, HTMLStencilElement {}
+
   var HTMLHeaderComponentElement: {
     prototype: HTMLHeaderComponentElement;
     new (): HTMLHeaderComponentElement;
@@ -362,10 +434,16 @@ declare global {
 
 
 declare global {
-  interface HTMLLazyImgElement extends HTMLStencilElement {
-    'alt': string;
-    'src': string;
+
+  namespace StencilComponents {
+    interface LazyImg {
+      'alt': string;
+      'src': string;
+    }
   }
+
+  interface HTMLLazyImgElement extends StencilComponents.LazyImg, HTMLStencilElement {}
+
   var HTMLLazyImgElement: {
     prototype: HTMLLazyImgElement;
     new (): HTMLLazyImgElement;
@@ -392,9 +470,15 @@ declare global {
 
 
 declare global {
-  interface HTMLLoginFirebaseElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface LoginFirebase {
+
+    }
   }
+
+  interface HTMLLoginFirebaseElement extends StencilComponents.LoginFirebase, HTMLStencilElement {}
+
   var HTMLLoginFirebaseElement: {
     prototype: HTMLLoginFirebaseElement;
     new (): HTMLLoginFirebaseElement;
@@ -419,9 +503,15 @@ declare global {
 
 
 declare global {
-  interface HTMLLoginGoogleFirebaseElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface LoginGoogleFirebase {
+
+    }
   }
+
+  interface HTMLLoginGoogleFirebaseElement extends StencilComponents.LoginGoogleFirebase, HTMLStencilElement {}
+
   var HTMLLoginGoogleFirebaseElement: {
     prototype: HTMLLoginGoogleFirebaseElement;
     new (): HTMLLoginGoogleFirebaseElement;
@@ -446,9 +536,15 @@ declare global {
 
 
 declare global {
-  interface HTMLMapComponentElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface MapComponent {
+
+    }
   }
+
+  interface HTMLMapComponentElement extends StencilComponents.MapComponent, HTMLStencilElement {}
+
   var HTMLMapComponentElement: {
     prototype: HTMLMapComponentElement;
     new (): HTMLMapComponentElement;
@@ -473,9 +569,15 @@ declare global {
 
 
 declare global {
-  interface HTMLMenuLinksElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface MenuLinks {
+
+    }
   }
+
+  interface HTMLMenuLinksElement extends StencilComponents.MenuLinks, HTMLStencilElement {}
+
   var HTMLMenuLinksElement: {
     prototype: HTMLMenuLinksElement;
     new (): HTMLMenuLinksElement;
@@ -500,9 +602,15 @@ declare global {
 
 
 declare global {
-  interface HTMLMyAppElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface MyApp {
+
+    }
   }
+
+  interface HTMLMyAppElement extends StencilComponents.MyApp, HTMLStencilElement {}
+
   var HTMLMyAppElement: {
     prototype: HTMLMyAppElement;
     new (): HTMLMyAppElement;
@@ -527,9 +635,50 @@ declare global {
 
 
 declare global {
-  interface HTMLRegisterFirebaseElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface MyGoogleMaps {
+      'addMarker': (lat: number, lng: number, created?: Date) => void;
+      'apiKey': string;
+      'getCenter': () => any;
+    }
   }
+
+  interface HTMLMyGoogleMapsElement extends StencilComponents.MyGoogleMaps, HTMLStencilElement {}
+
+  var HTMLMyGoogleMapsElement: {
+    prototype: HTMLMyGoogleMapsElement;
+    new (): HTMLMyGoogleMapsElement;
+  };
+  interface HTMLElementTagNameMap {
+    'my-google-maps': HTMLMyGoogleMapsElement;
+  }
+  interface ElementTagNameMap {
+    'my-google-maps': HTMLMyGoogleMapsElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'my-google-maps': JSXElements.MyGoogleMapsAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface MyGoogleMapsAttributes extends HTMLAttributes {
+      'apiKey'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface RegisterFirebase {
+
+    }
+  }
+
+  interface HTMLRegisterFirebaseElement extends StencilComponents.RegisterFirebase, HTMLStencilElement {}
+
   var HTMLRegisterFirebaseElement: {
     prototype: HTMLRegisterFirebaseElement;
     new (): HTMLRegisterFirebaseElement;
@@ -554,10 +703,16 @@ declare global {
 
 
 declare global {
-  interface HTMLSaveLocationFirestoreElement extends HTMLStencilElement {
-    'action': string;
-    'saveText': string;
+
+  namespace StencilComponents {
+    interface SaveLocationFirestore {
+      'action': string;
+      'saveText': string;
+    }
   }
+
+  interface HTMLSaveLocationFirestoreElement extends StencilComponents.SaveLocationFirestore, HTMLStencilElement {}
+
   var HTMLSaveLocationFirestoreElement: {
     prototype: HTMLSaveLocationFirestoreElement;
     new (): HTMLSaveLocationFirestoreElement;
@@ -583,9 +738,15 @@ declare global {
 
 
 declare global {
-  interface HTMLUserCarsElement extends HTMLStencilElement {
 
+  namespace StencilComponents {
+    interface UserCars {
+
+    }
   }
+
+  interface HTMLUserCarsElement extends StencilComponents.UserCars, HTMLStencilElement {}
+
   var HTMLUserCarsElement: {
     prototype: HTMLUserCarsElement;
     new (): HTMLUserCarsElement;

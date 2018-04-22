@@ -89,7 +89,7 @@ export class UserCars {
                   : <div item-end></div>
                 }
               </ion-item>
-              <ion-item-options side="right">
+              <ion-item-options>
                 {item.info.selected
                   ? null
                   : <button ion-button color="primary" onClick={() => this.selectCar(item.carId)}><ion-icon name="checkmark"></ion-icon> Seleccionar</button>

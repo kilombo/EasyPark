@@ -1,4 +1,6 @@
 import { Component, Prop, State } from '@stencil/core';
+import { Plugins } from '@capacitor/core';
+const { Geolocation } = Plugins;
 declare var firebase: any;
 
 // Initialize Cloud Firestore through Firebase
@@ -91,14 +93,26 @@ export class SaveLocationFirestore {
     }
   }
 
+  errorCallback(error) {
+    console.log('Error getting position: ', error);
+  }
+
+  successLocationCallback(position) {
+    this.latitude = position.coords.latitude;
+    this.longitude = position.coords.longitude;
+    console.log(position);
+    this.saveCoords();
+  }
+
   getLocation() {
+    console.log('getLocation');
+
+    Geolocation.getCurrentPosition().then((position) => {
+      console.log('position',position);
+    });
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        console.log(position);
-        this.saveCoords();
-      });
+      // navigator.geolocation.getCurrentPosition(this.successLocationCallback, this.errorCallback, { timeout: 10000 });
+
     } else {
       console.error("Geolocation is not supported by this browser.");
     }

@@ -1,0 +1,6 @@
+{
+  "appId": "com.easypark.app",
+  "appName": "EasyPark",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}

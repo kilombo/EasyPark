@@ -90,11 +90,11 @@ export class AppAddEditUserCar {
           <form onSubmit={(e) => this.handleSubmit(e)}>
             <ion-list>
               <ion-item>
-                <ion-label floating>Marca</ion-label>
+                <ion-label>Marca</ion-label>
                 <ion-input type="text" value={this.brand} onInput={() => this.handleBrandChange(event)} required></ion-input>
               </ion-item>
               <ion-item>
-                <ion-label floating>Modelo</ion-label>
+                <ion-label>Modelo</ion-label>
                 <ion-input type="text" value={this.model} onInput={() => this.handleModelChange(event)} required></ion-input>
               </ion-item>
             </ion-list>
