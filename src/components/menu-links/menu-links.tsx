@@ -1,5 +1,4 @@
-import { Component, State, Prop } from '@stencil/core';
-import { RouterHistory } from '@stencil/router';
+import { Component, State } from '@stencil/core';
 declare var firebase: any;
 
 @Component({
@@ -9,7 +8,6 @@ declare var firebase: any;
 export class MenuLinks {
 
   @State() uid: string = null;
-  @Prop() history: RouterHistory;
 
   componentDidLoad() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -27,8 +25,6 @@ export class MenuLinks {
     firebase.auth().signOut().then(() => {
       // Sign-out successful.
       this.uid = null;
-      // pushing a route (going forwards to a certain route)
-      this.history.push('/', {});
     }).catch((error) => {
       // An error happened.
       console.error(error);

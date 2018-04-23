@@ -100,6 +100,9 @@ export class LoginFirebase {
                 <ion-button float-right onClick={() => this.doLogin()}>Acceder</ion-button>
               </ion-col>
             </ion-row>
+            <ion-row>
+              <ion-col><login-google-firebase></login-google-firebase></ion-col>
+            </ion-row>
           </ion-grid>
         </container>
       );

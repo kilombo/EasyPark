@@ -1,3 +1,16 @@
+# EasyPark
+A PWA to help people finding parking spot.
+I used in the past WazyPark, a great project that help me a lot finding parking and helping me to remember where i parked my car XD.
+
+This project started also to learn stenciljs.com
+
+## Demo
+ [https://easypark-66317.firebaseapp.com/](https://easypark-66317.firebaseapp.com/)
+
+## Contributions
+Feel free to report bugs and make feature requests in the [Issue Tracker](https://github.com/kilombo/EasyPark/issues), fork and create pull requests!
+
+
 # Ionic PWA Toolkit Beta
 
 The Ionic PWA Toolkit is the recommended way to build production ready Progressive Web Apps (PWAs) with Ionic. This toolkit gets you started with [Stencil](https://stenciljs.com/) and an early release of Ionic (4.x+). This combination of tools gives you the ability to build a fast, efficient PWA with zero config needed and best practices out of the box.

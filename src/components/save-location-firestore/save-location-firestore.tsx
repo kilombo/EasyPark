@@ -1,4 +1,6 @@
 import { Component, Prop, State } from '@stencil/core';
+import { Plugins } from '@capacitor/core';
+const { Geolocation } = Plugins;
 declare var firebase: any;
 
 // Initialize Cloud Firestore through Firebase
@@ -39,7 +41,8 @@ export class SaveLocationFirestore {
           this.userCarId = doc.id;
           db.collection('userCars').doc(doc.id).set({
             'latitude': this.latitude,
-            'longitude': this.longitude
+            'longitude': this.longitude,
+            'updated': firebase.firestore.FieldValue.serverTimestamp()
           }, { merge: true })
             .then().catch((error) => {
               console.log("Error updating documents: ", error);
@@ -68,7 +71,8 @@ export class SaveLocationFirestore {
             });
             db.collection('userCars').doc(this.userCarId).set({
               'latitude': null,
-              'longitude': null
+              'longitude': null,
+              'updated': firebase.firestore.FieldValue.serverTimestamp()
             }, { merge: true })
               .then().catch((error) => {
                 console.log("Error updating documents: ", error);
@@ -89,14 +93,26 @@ export class SaveLocationFirestore {
     }
   }
 
+  errorCallback(error) {
+    console.log('Error getting position: ', error);
+  }
+
+  successLocationCallback(position) {
+    this.latitude = position.coords.latitude;
+    this.longitude = position.coords.longitude;
+    console.log(position);
+    this.saveCoords();
+  }
+
   getLocation() {
+    console.log('getLocation');
+
+    Geolocation.getCurrentPosition().then((position) => {
+      console.log('position',position);
+    });
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        console.log(position);
-        this.saveCoords();
-      });
+      // navigator.geolocation.getCurrentPosition(this.successLocationCallback, this.errorCallback, { timeout: 10000 });
+
     } else {
       console.error("Geolocation is not supported by this browser.");
     }

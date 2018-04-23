@@ -1,4 +1,5 @@
-import { Component, State } from '@stencil/core';
+import { Component, State, Prop } from '@stencil/core';
+import { ToastController } from '@ionic/core';
 declare var firebase: any;
 
 // Initialize Cloud Firestore through Firebase
@@ -14,8 +15,10 @@ export class ContactForm {
   @State() email: string;
   @State() comments: string;
 
+  @Prop({ connect: 'ion-toast-controller' }) toastCtrl: ToastController;
+
   handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     console.log('name:', this.name);
     console.log('email:', this.email);
     console.log('comments:', this.comments);
@@ -28,8 +31,10 @@ export class ContactForm {
         'comments': this.comments,
         'created': firebase.firestore.FieldValue.serverTimestamp(),
       })
-        .then(() => {
+        .then(async () => {
           console.log("Document successfully updated!");
+          const toast = await this.toastCtrl.create({ message: 'Message sent, thanks!', duration: 1000 });
+          toast.present();
         }).catch((error) => {
           console.log("Error updating documents: ", error);
         });
@@ -58,15 +63,15 @@ export class ContactForm {
         <h2>Hola {this.name}</h2>
         <ion-list>
           <ion-item>
-            <ion-label floating>Nombre</ion-label>
+            <ion-label>Nombre</ion-label>
             <ion-input type="text" value={this.name} onInput={() => this.handleNameChange(event)} required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>Email</ion-label>
+            <ion-label>Email</ion-label>
             <ion-input type="email" value={this.email} onInput={() => this.handleEmailChange(event)} required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>Comentarios</ion-label>
+            <ion-label>Comentarios</ion-label>
             <ion-textarea value={this.comments} onInput={() => this.handleCommentsChange(event)} required></ion-textarea>
           </ion-item>
         </ion-list>
