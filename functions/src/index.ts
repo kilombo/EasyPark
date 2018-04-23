@@ -36,9 +36,9 @@ const sendAdminEmail = async (subject: string, text: string) => {
 /*
   Send email alert to admin when a contact message is received.
 */
-export const sendEmailContactAlert = functions.firestore.document("contactMessages/{messageId}").onCreate(async (event) => {
-  const messageId = event.data.id;
-  const messageData = event.data.data();
+export const sendEmailContactAlert = functions.firestore.document("contactMessages/{messageId}").onCreate(async (snap, context) => {
+  const messageId = snap.id;
+  const messageData = snap.data();
   const emailSubject = 'EasyPark - Nuevo mensaje de Contacto!';
   const emailText = `
   Has recibido un nuevo mensaje de Contacto!
@@ -60,8 +60,8 @@ export const sendEmailContactAlert = functions.firestore.document("contactMessag
  * On user created
  * @type {CloudFunction<UserRecord>}
  */
-export const created = functions.auth.user().onCreate(async (event) => {
-  const user = event.data;
+export const created = functions.auth.user().onCreate(async (userMetadata, context) => {
+  const user = userMetadata;
   const name = user.displayName ? user.displayName : null;
   const email = user.email ? user.email : null;
   const providerData = user.providerData ? user.providerData : null;
