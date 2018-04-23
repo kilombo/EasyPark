@@ -13,10 +13,10 @@ export class AppHome {
         <header-component></header-component>
         <ion-content>
           <ion-grid>
-          <ion-row>
-            <ion-col col-12 text-center>
-              EasyPark es una aplicación para ayudarnos entre todos los conductores a encontrar aparcamiento.
-            </ion-col>
+            <ion-row>
+              <ion-col col-12 text-center>
+                EasyPark es una aplicación para ayudarnos entre todos los conductores a encontrar aparcamiento.
+              </ion-col>
             </ion-row>
           </ion-grid>
         </ion-content>

@@ -63,15 +63,15 @@ export class ContactForm {
         <h2>Hola {this.name}</h2>
         <ion-list>
           <ion-item>
-            <ion-label floating>Nombre</ion-label>
+            <ion-label>Nombre</ion-label>
             <ion-input type="text" value={this.name} onInput={() => this.handleNameChange(event)} required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>Email</ion-label>
+            <ion-label>Email</ion-label>
             <ion-input type="email" value={this.email} onInput={() => this.handleEmailChange(event)} required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>Comentarios</ion-label>
+            <ion-label>Comentarios</ion-label>
             <ion-textarea value={this.comments} onInput={() => this.handleCommentsChange(event)} required></ion-textarea>
           </ion-item>
         </ion-list>
