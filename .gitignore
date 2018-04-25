@@ -18,9 +18,11 @@ log.txt
 .versions/
 node_modules/
 $RECYCLE.BIN/
-firestore-backup/
+firestore-backup/*
 
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
+firestore-backup/firebase-private-key/serviceAccountKey.json
