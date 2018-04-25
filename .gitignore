@@ -19,6 +19,7 @@ log.txt
 node_modules/
 $RECYCLE.BIN/
 firestore-backup/*
+material-grafico/*
 
 .DS_Store
 Thumbs.db
